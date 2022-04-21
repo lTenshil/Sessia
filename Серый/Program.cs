@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            List<Session> sessions = new List<Session>();
+            Session[] sessions = new Session[4];
             bool flag = true;
             while (flag)
             {
@@ -16,21 +16,28 @@
                         case ConsoleKey.NumPad1:
                             for (int i = 0; i < 4; i++)
                             {
-                                sessions.Add(Session.Input());
+                                sessions[i] = Session.Input();
                             }
                             break;
                         case ConsoleKey.NumPad2:
-                            Console.WriteLine();
-                            Console.WriteLine("| ФИО преподавателя              | Корпус | Номер аудитории | Количество мест | Предмет              | Дата экзамена | Количество студентов |");
-                            foreach (Session session in sessions)
+                            if (sessions.Count() > 0)
                             {
-                                session.Output();
+                                Console.WriteLine();
+                                Console.WriteLine("| ФИО преподавателя              | Корпус | Номер аудитории | Количество мест | Предмет              | Дата экзамена | Количество студентов |");
+                                foreach (Session session in sessions)
+                                {
+                                    session.Output();
+                                }
+                                Console.WriteLine();
+                                Console.WriteLine("Список группы: ");
+                                foreach (var item in Group.Students)
+                                {
+                                    item.Print();
+                                }
                             }
-                            Console.WriteLine();
-                            Console.WriteLine("Список группы: ");
-                            foreach (var item in Group.Students)
+                            else
                             {
-                                item.Print();
+                                Console.WriteLine("Расписание сессии пустое");
                             }
                             break;
 

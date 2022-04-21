@@ -12,7 +12,7 @@
         //input
         public static Educator Input()
         {
-            Console.Write("\nВведите ФИО преподавателя");
+            Console.Write("\nВведите ФИО преподавателя: ");
             var FIO = Console.ReadLine();
             return new Educator(FIO);
         }
